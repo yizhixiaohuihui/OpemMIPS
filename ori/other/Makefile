@@ -32,5 +32,5 @@ inst_rom.asm: inst_rom.om
 inst_rom.data: inst_rom.bin
 	./Bin2Mem.exe -f $< -o $@
 clean:
-	rm -f *.o *.om *.bin *.data *.mif *.asm
+	rm -f *.o *.om *.bin *.mif *.asm
 
