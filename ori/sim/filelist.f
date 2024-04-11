@@ -1,0 +1,14 @@
+../tb/openmips_min_sopc_tb.v
+../rtl/defines.v
+../rtl/ex_mem.v
+../rtl/ex.v
+../rtl/id_ex.v
+../rtl/id.v
+../rtl/if_id.v
+../rtl/inst_rom.v
+../rtl/mem.v
+../rtl/mem_wb.v
+../rtl/openmips_min_sopc.v
+../rtl/openmips.v
+../rtl/pc_reg.v
+../rtl/regfile.v

@@ -6,7 +6,7 @@
  * @LastEditTime: 2024-04-09 17:29:24
  */
 
-`include "defines.v"
+`include "../rtl/defines.v"
 
 module if_id(
 	input	wire				 		clk,

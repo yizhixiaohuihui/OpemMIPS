@@ -4,7 +4,7 @@
  * @Date: 2024-04-09 22:17:00
  */
 
-`include "defines.v"
+`include "../rtl/defines.v"
 
 module regfile(
 

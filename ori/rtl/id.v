@@ -4,7 +4,7 @@
  * @Date: 2024-04-09 22:59:26
  */
 
-`include "defines.v"
+`include "../rtl/defines.v"
 
 module id(
 
@@ -17,8 +17,8 @@ module id(
 	input wire[`RegBus]           		reg2_data_i,
 
 	// ouput to Regfile's message
-	output reg                    			reg1_read_o,
-	output reg                    			reg2_read_o,     
+	output reg                    			reg1_read_o,	// Regfile reg1's ReadEnable
+	output reg                    			reg2_read_o,    // Regfile reg2's ReadEnable
 	output reg[`RegAddrBus]       	reg1_addr_o,
 	output reg[`RegAddrBus]       	reg2_addr_o, 	      
 	
@@ -72,8 +72,8 @@ module id(
 		  			wreg_o <= `WriteEnable;		// ori need write in destination register
 					aluop_o <= `EXE_OR_OP;	// aiuop is or operation
 		  			alusel_o <= `EXE_RES_LOGIC; // logic operation
-					reg1_read_o <= 1'b1;	
-					reg2_read_o <= 1'b0;	  	
+					reg1_read_o <= 1'b1;	// only need read rs
+					reg2_read_o <= 1'b0;	// immediate num not need read from reg
 					imm <= {16'h0, inst_i[15:0]}; // extend immediate num to unsinged 32 bits		
 					wd_o <= inst_i[20:16]; // rt: destination register's address to write 
 					instvalid <= `InstValid;	
@@ -84,7 +84,7 @@ module id(
 		end       //if
 	end         //always
 	
-	// 2. sure source num 1 need to operate
+	// 2. choose source num2
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			reg1_o <= `ZeroWord;
@@ -100,7 +100,7 @@ module id(
 	  	end
 	end
 	
-	// 3. sure source num 1 need to operate
+	// 3. choose source num2 
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			reg2_o <= `ZeroWord;

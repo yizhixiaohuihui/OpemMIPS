@@ -4,7 +4,7 @@
  * @Date: 2024-04-09 16:09:12
  */
  
-`include "defines.v"
+`include "../rtl/defines.v"
 
 module pc_reg(
 	input	wire							clk, 
